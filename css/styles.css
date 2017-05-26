@@ -1,0 +1,139 @@
+/*************************************************
+** 1. Typography
+*************************************************/
+* {
+  box-sizing: border-box;
+}
+html, .root {
+  font-size: 16px;
+  line-height: 26px;
+}
+body, .article {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  line-height: 1.625em;
+  margin: auto;
+}
+h1, .h1 {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 4.25em;
+  line-height: 1.14705882em;
+  margin-top: 0.38235294em;
+  margin-bottom: 0.76470588em;
+}
+h2, .h2 {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 2.625em;
+  line-height: 1.23809524em;
+  margin-top: 0.61904762em;
+  margin-bottom: 0.61904762em;
+}
+h3, .h3 {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 1.625em;
+  line-height: 1em;
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+h4, .h4 {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  line-height: 1.625em;
+  margin-top: 1.625em;
+  margin-bottom: 0;
+}
+h5, .h5 {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  line-height: 1.625em;
+  margin-top: 1.625em;
+  margin-bottom: 0;
+}
+p, ul, ol, pre, table, blockquote {
+  margin-top: 0;
+  margin-bottom: 1.625em;
+}
+ul ul, ol ol, ul ol, ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+hr, .hr {
+  border: 1px solid;
+  margin: -1px 0;
+}
+a, b, i, strong, em, small, code {
+  line-height: 0;
+}
+sub, sup {
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+
+/*************************************************
+** 2. General
+*************************************************/
+.wrapper{
+  max-width: 1280px;
+}
+/*************************************************
+** 3. Header
+*************************************************/
+header{
+  background-color: #2C3E50;
+  height: 78px;
+}
+header a:nth-child(2){
+  padding-left: 0;
+}
+header .pure-menu-link{
+  padding-top: 0.8125rem;
+  padding-bottom: 0.8125rem;
+}
+header .pure-menu-link:hover{
+  background-color: transparent;
+}
+header a .brand{
+  height: 4.875rem;
+}
+header a .brand-logo{
+  background-color: #3498DB;
+  border-radius: 50%;
+  color: #ECF0F1;
+  font-size: 26px;
+  height: 52px;
+  line-height: 3.25rem;
+  text-align: center;
+  width: 52px;
+}
+header a .brand .h2 {
+  color: #ECF0F1;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+header .pure-menu-list{
+  float: right;
+  margin-right: 1.618rem;
+}
+header .pure-menu-list .pure-menu-item{
+  margin-left: 1rem;
+}
+header .pure-menu-list .pure-menu-item .pure-menu-link{
+  background-color: #2980B9;
+  border-radius: 3px;
+  color: #ECF0F1;
+  font-size: 26px;
+  height: 52px;
+  line-height: 26px;
+  margin-top: 13px;
+  margin-bottom: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 120px;
+}
