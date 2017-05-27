@@ -87,20 +87,22 @@ sub {
 *************************************************/
 header{
   background-color: #2C3E50;
-  height: 78px;
+  /*height: 78px;*/
+  padding: 0.8125rem 1rem;
+}
+header::after{
+  clear: both;
+  content: '';
+  display: table;
 }
 header a:nth-child(2){
   padding-left: 0;
 }
 header .pure-menu-link{
-  padding-top: 0.8125rem;
-  padding-bottom: 0.8125rem;
+  padding: 0;
 }
 header .pure-menu-link:hover{
   background-color: transparent;
-}
-header a .brand{
-  height: 4.875rem;
 }
 header a .brand-logo{
   background-color: #3498DB;
@@ -112,6 +114,9 @@ header a .brand-logo{
   text-align: center;
   width: 52px;
 }
+header .brand-name{
+  margin-left: 0.75rem;
+}
 header a .brand .h2 {
   color: #ECF0F1;
   margin-top: 0;
@@ -119,21 +124,71 @@ header a .brand .h2 {
 }
 header .pure-menu-list{
   float: right;
-  margin-right: 1.618rem;
 }
 header .pure-menu-list .pure-menu-item{
-  margin-left: 1rem;
+  margin-left: 0.5rem;
+  padding: 0
 }
 header .pure-menu-list .pure-menu-item .pure-menu-link{
   background-color: #2980B9;
   border-radius: 3px;
   color: #ECF0F1;
-  font-size: 26px;
-  height: 52px;
-  line-height: 26px;
-  margin-top: 13px;
-  margin-bottom: 13px;
+  font-size: 1.625rem;
+  /*height: 2.625rem;*/
+  line-height: 1.625rem;
+  /*padding: 5px 1.625rem;*/
+  padding: 0.8125rem 0;
   text-transform: uppercase;
   text-align: center;
-  width: 120px;
+  width: 7.5rem;
+}
+/*************************************************
+** 4. Content
+*************************************************/
+section#main{
+  height: calc(100vh - 78px);
+  position: relative;
+  width: 100%;
+}
+
+iframe#canvas{
+  border: none;
+  box-sizing: border-box;
+  float: left;
+  height: 100%;
+  width: 71%;
+}
+div#code-panel-container{
+  box-sizing: border-box;
+  background-color: #313131;
+  float: right;
+  padding: 1.625rem;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  top: 0px;
+  width: 29%;
+}
+div.close-code-panel a{
+  background-color: #E74C3C;
+  border-radius: 50%;
+  color: #ECF0F1;
+  display: block;
+  height: 26px;
+  line-height: 26px;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0.5em;
+  left: 0.5em;
+  width: 26px;
+  z-index: 99;
+}
+textarea#code{
+  background-color: #3E3E3E;
+  min-height: 100% !important;
+  overflow-y: scroll;
+  resize: none;
+  white-space: normal;
+  word-wrap: normal;
 }

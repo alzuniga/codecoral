@@ -12,6 +12,18 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
   <!-- Code Coral styles -->
   <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Code Mirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/theme/monokai.min.css" integrity="sha256-L0pJRnSmrQFY0qbGtEdIfJwxE79VZefpW+02lGW8gag=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css" integrity="sha256-GGAcbnLrt4/AHq5cP2+2UWetYcNsQNjNMqSRStBoPLQ=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.js" integrity="sha256-WD+JTNs8bEZIytzOjSY6TaEHzg50PiN62QZ9YEWFpFE=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/mode/htmlmixed/htmlmixed.min.js" integrity="sha256-fYwhT0v38tXMnxU+JibUW1drchatADDwdPWvOuxI/yg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/mode/xml/xml.min.js" integrity="sha256-ERFGS58tayDq5kkyNwd/89iZZ+HglMH7eYXxG1hxTvA=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/mode/css/css.min.js" integrity="sha256-FM1AMdIH6Zrnz+JGuB5uTB6jxAJ8/XvGvq4HJM0YtDQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/mode/javascript/javascript.min.js" integrity="sha256-Zci/fLjT1ALmFze3qSOXnHkYOOpyj5WUHM/Ioy+Bpyo=" crossorigin="anonymous"></script>
+  <!-- Emmet -->
+  <script src="https://unpkg.com/emmet-codemirror@1.2.5/dist/emmet.js"></script>
+
 </head>
 
 <body>
@@ -21,7 +33,7 @@
     <a href="#" class="pure-menu-heading pure-menu-link">
       <div class="brand">
         <div class="brand-logo">
-          < />
+          &lt;&nbsp;/&gt;
         </div>
       </div>
     </a>
@@ -36,6 +48,16 @@
       <li class="pure-menu-item"><a href="#" class="pure-menu-link">js</a></li>
     </ul>
   </header>
+
+  <!-- section - main
+  =============================================-->
+  <section id="main">
+    <iframe id="canvas"></iframe>
+    <div id="code-panel-container">
+      <div class="close-code-panel"><a href="#">X</a></div>
+      <textarea id="code"></textarea>
+    </div>
+  </section>
 
   <!--
 ##################################################
