@@ -6,12 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Code Coral</title>
+  <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
   <!-- Pure CSS minified -->
   <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
   <!-- Google fonts - Montserrat, Roboto -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
   <!-- Code Coral styles -->
   <link rel="stylesheet" href="css/styles.css">
+  <!-- jQuery-UI theme -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
   <!-- Code Mirror -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/theme/monokai.min.css" integrity="sha256-L0pJRnSmrQFY0qbGtEdIfJwxE79VZefpW+02lGW8gag=" crossorigin="anonymous" />
@@ -51,11 +54,14 @@
 
   <!-- section - main
   =============================================-->
-  <section id="main">
-    <iframe id="canvas"></iframe>
-    <div id="code-panel-container">
+  <section class="main">
+    <div class="canvas-panel">
+      <iframe class="canvas"></iframe>
+    </div>
+    <div class="code-panel">
+      <div class="grip"></div>
       <div class="close-code-panel"><a href="#">X</a></div>
-      <textarea id="code"></textarea>
+      <textarea id="code" class="code"></textarea>
     </div>
   </section>
 

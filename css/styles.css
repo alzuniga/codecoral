@@ -119,11 +119,13 @@ header .brand-name{
 }
 header a .brand .h2 {
   color: #ECF0F1;
+  font-weight: lighter;
   margin-top: 0;
   margin-bottom: 0;
 }
 header .pure-menu-list{
   float: right;
+  margin: 0.325rem 0;
 }
 header .pure-menu-list .pure-menu-item{
   margin-left: 0.5rem;
@@ -133,43 +135,58 @@ header .pure-menu-list .pure-menu-item .pure-menu-link{
   background-color: #2980B9;
   border-radius: 3px;
   color: #ECF0F1;
-  font-size: 1.625rem;
+  font-size: 1rem;
   /*height: 2.625rem;*/
-  line-height: 1.625rem;
+  line-height: 1rem;
+  min-width: 4.875rem;
   /*padding: 5px 1.625rem;*/
-  padding: 0.8125rem 0;
+  padding: 0.8125rem 0.8125rem;
   text-transform: uppercase;
   text-align: center;
-  width: 7.5rem;
 }
 /*************************************************
 ** 4. Content
 *************************************************/
-section#main{
+section.main{
   height: calc(100vh - 78px);
   position: relative;
   width: 100%;
 }
 
-iframe#canvas{
+.canvas-panel{
+  height: 100%;
+  min-width: 50%;
+  position: absolute;
+  top: 0;
+  right: 200px;
+  bottom: 0;
+  left: 0;
+}
+.canvas{
   border: none;
-  box-sizing: border-box;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.grip{
+  background-color: #313131;
+  cursor: ew-resize;
   float: left;
   height: 100%;
-  width: 71%;
+  width: .625rem;
 }
-div#code-panel-container{
-  box-sizing: border-box;
+.code-panel{
   background-color: #313131;
-  float: right;
-  padding: 1.625rem;
+  height: 100%;
+  max-width: 50%;
+  padding: 2.625rem .625rem .625rem 0;
   position: absolute;
-  bottom: 0px;
-  right: 0px;
-  top: 0px;
-  width: 29%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 426px;
 }
-div.close-code-panel a{
+.close-code-panel a{
   background-color: #E74C3C;
   border-radius: 50%;
   color: #ECF0F1;
@@ -180,13 +197,13 @@ div.close-code-panel a{
   text-align: center;
   text-decoration: none;
   top: 0.5em;
-  left: 0.5em;
+  right: 0.5em;
   width: 26px;
   z-index: 99;
 }
-textarea#code{
+textarea.code{
   background-color: #3E3E3E;
-  min-height: 100% !important;
+  min-height: 100%;
   overflow-y: scroll;
   resize: none;
   white-space: normal;
