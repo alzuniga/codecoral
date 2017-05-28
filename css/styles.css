@@ -169,13 +169,7 @@ section.main{
   height: 100%;
   width: 100%;
 }
-.grip{
-  background-color: #313131;
-  cursor: ew-resize;
-  float: left;
-  height: 100%;
-  width: .625rem;
-}
+
 .code-panel{
   background-color: #313131;
   height: 100%;
