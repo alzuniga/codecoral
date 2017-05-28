@@ -16,13 +16,22 @@ window.onload = function() {
   });
 };
 
-$('.code-panel').resizable({
-  alsoResizeReverse: '.canvas-panel',
-  containment: 'section.main',
-  handles: 'e',
-  minWidth: 300,
-  maxWidth: 640
+$().ready(function(){
+  $('.code-panel').width(Math.floor($('.main').width() * 0.3));
+  $('.canvas-panel').width(Math.floor($('.main').width() * 0.7));
+  $('.code-panel').resizable({
+    alsoResizeReverse: '.canvas-panel',
+    containment: 'section.main',
+    handles: 'e'
+  });
 });
+
+$('.main').resize(function(){
+  console.log('Resize Event Fired');
+  var cpWidth = Math.floor($('.code-panel').width());
+  $('.canvas-panel').width(Math.floor($('.main') - cpWidth));
+});
+
 
 // function getNewWidthPercentage(wrapperWidth, elementWidth){
 // 	var elWidth = ((elementWidth - 52) / wrapperWidth) * 100;

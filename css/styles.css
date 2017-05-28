@@ -1,3 +1,13 @@
+/*
+** Color pallete - Flat UI
+** #2C3E50 - Charcoal
+** #E74C3C - Carmine pink
+** #ECF0F1 - Anti-flash white
+** #3498DB - Bleu de France
+** #2980B9 - Tufts blue
+** #E7C83C
+*/
+
 /*************************************************
 ** 1. Typography
 *************************************************/
@@ -79,6 +89,9 @@ sub {
 /*************************************************
 ** 2. General
 *************************************************/
+:focus{
+  outline: -webkit-focus-ring-color auto 3px;
+}
 .wrapper{
   max-width: 1280px;
 }
@@ -101,23 +114,25 @@ header a:nth-child(2){
 header .pure-menu-link{
   padding: 0;
 }
-header .pure-menu-link:hover{
+header .pure-menu-link:hover,
+header .pure-menu-link:focus{
   background-color: transparent;
 }
 header a .brand-logo{
   background-color: #3498DB;
   border-radius: 50%;
   color: #ECF0F1;
-  font-size: 26px;
-  height: 52px;
-  line-height: 3.25rem;
+  font-size: 1rem;
+  height: 42px;
+  /*line-height: 3.25rem;*/
+  line-height: 2.5rem;
   text-align: center;
-  width: 52px;
+  width: 42px;
 }
 header .brand-name{
   margin-left: 0.75rem;
 }
-header a .brand .h2 {
+header a .brand .h3 {
   color: #ECF0F1;
   font-weight: lighter;
   margin-top: 0;
@@ -125,39 +140,51 @@ header a .brand .h2 {
 }
 header .pure-menu-list{
   float: right;
-  margin: 0.325rem 0;
+  /*margin: 0.325rem 0;*/
 }
 header .pure-menu-list .pure-menu-item{
   margin-left: 0.5rem;
   padding: 0
 }
 header .pure-menu-list .pure-menu-item .pure-menu-link{
+  display: inline-block;
   background-color: #2980B9;
-  border-radius: 3px;
+  border-radius: 50%;
   color: #ECF0F1;
-  font-size: 1rem;
-  /*height: 2.625rem;*/
-  line-height: 1rem;
-  min-width: 4.875rem;
-  /*padding: 5px 1.625rem;*/
-  padding: 0.8125rem 0.8125rem;
+  font-size: 1.618rem;
+  height: 42px;
+  /*line-height: 1.618rem;*/
   text-transform: uppercase;
   text-align: center;
+  width: 42px;
+}
+header .pure-menu-list .pure-menu-item .pure-menu-link span.fa{
+  line-height: 2.7rem;
+}
+header .pure-menu-list .pure-menu-item:nth-child(3) .pure-menu-link span.icon-javascript{
+  color: #ECF0F1;
+  display: inline-block;
+  font-size: 1.9rem;
+  font-weight: bolder;
+  line-height: 2.7rem;
+  margin-left: 0.4rem;
 }
 /*************************************************
 ** 4. Content
 *************************************************/
 section.main{
-  height: calc(100vh - 78px);
+  /*background-color: #272822;*/
+  height: calc(100vh - 68px);
   position: relative;
   width: 100%;
 }
 
 .canvas-panel{
+  background-color: #ECF0F1;
   display: inline-block;
   height: 100%;
-  min-width: 50%;
   max-width: 70%;
+  min-width: 30%;
   position: absolute;
   top: 0;
   right: 0;
@@ -165,25 +192,29 @@ section.main{
 }
 .canvas{
   border: none;
-  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   height: 100%;
   width: 100%;
 }
 
 .code-panel{
-  background-color: #313131;
+  background-color: #272822;
   height: 100%;
+  max-width: 70%;
   min-width: 30%;
-  /*padding: 2.625rem .625rem .625rem 0;*/
+  padding: 2.625rem 0;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
-  width: 426px;
 }
 .close-code-panel a{
   background-color: #E74C3C;
-  border-radius: 50%;
+  /*border-radius: 50%;*/
   color: #ECF0F1;
   display: block;
   height: 26px;
@@ -191,16 +222,18 @@ section.main{
   position: absolute;
   text-align: center;
   text-decoration: none;
-  top: 0.5em;
-  right: 0.5em;
+  top: 0;
+  right: 0;
   width: 26px;
   z-index: 99;
 }
-textarea.code{
-  background-color: #3E3E3E;
+.code{
+  margin: 0 0.5rem;
   min-height: 100%;
   overflow-y: scroll;
   resize: none;
-  white-space: normal;
-  word-wrap: normal;
+}
+
+.CodeMirror-wrap{
+  padding-right: 8px;
 }

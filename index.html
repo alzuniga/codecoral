@@ -26,6 +26,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/mode/javascript/javascript.min.js" integrity="sha256-Zci/fLjT1ALmFze3qSOXnHkYOOpyj5WUHM/Ioy+Bpyo=" crossorigin="anonymous"></script>
   <!-- Emmet -->
   <script src="https://unpkg.com/emmet-codemirror@1.2.5/dist/emmet.js"></script>
+  <!-- Font Awesome 4.7.0 -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <!-- Font Mfizz -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.css" integrity="sha256-UnpNLaCbwDQ4tJMVKEqHx75/CcgToCrpi7110fQHNoE=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.woff">
 
 </head>
 
@@ -42,25 +47,25 @@
     </a>
     <a href="#" class="pure-menu-heading pure-menu-link">
       <div class="brand brand-name">
-        <h1 class="h2">Code Coral</h1>
+        <h1 class="h3">Code Coral</h1>
       </div>
     </a>
     <ul class="pure-menu-list">
-      <li class="pure-menu-item"><a href="#" class="pure-menu-link">html</a></li>
-      <li class="pure-menu-item"><a href="#" class="pure-menu-link">css</a></li>
-      <li class="pure-menu-item"><a href="#" class="pure-menu-link">js</a></li>
+      <li class="pure-menu-item"><a href="#" class="pure-menu-link" title="HTML"><span class="fa fa-html5"></span></a></li>
+      <li class="pure-menu-item"><a href="#" class="pure-menu-link" title="CSS"><span class="fa fa-css3"></span></a></li>
+      <li class="pure-menu-item"><a href="#" class="pure-menu-link" title="JavaScript"><span class="icon-javascript"></span></a></li>
     </ul>
   </header>
 
   <!-- section - main
   =============================================-->
   <section class="main">
+    <div class="code-panel">
+      <textarea id="code" class="code"></textarea>
+      <div class="close-code-panel"><a href="#">X</a></div>
+    </div>
     <div class="canvas-panel">
       <iframe class="canvas"></iframe>
-    </div>
-    <div class="code-panel">
-      <div class="close-code-panel"><a href="#">X</a></div>
-      <textarea id="code" class="code"></textarea>
     </div>
   </section>
 
