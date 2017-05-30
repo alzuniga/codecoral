@@ -1,42 +1,30 @@
 /*==================================================
 ** HTML/CSS/JS editors and canvas
 **================================================*/
-var iframe = $('.canvas').contents();           // iframe for code
-var panels = {
-  html: {
-    target: iframe.find('body#codeCoralHtml')  // target body tag of iframe
-  },
-  css: {
-    target: iframe.find('style#codeCoralCss')  // target style tag of iframe
-  },
-  js: {
-    target: iframe.find('script#codeCoralJs')  // target script tag of iframe
-  }
+
+var editor = {};
+$('#output').find('head').append('<style></style>\n<script></script>');
+var iframeTarget = {
+  html: $('#output').find('body'),
+  css: $('#output').find('style'),
+  javascript: $('#output').find('script')
 };
-
-// function to create HTML/CSS/JS editors
-function initEditor(language){
-  // grab panel based on specified language
-  var el = $('.main .code-panel-' + language)[0];
-  var lang = '';
-  if(language === 'js') lang = 'javascript';
-  else if (language === 'html') lang = 'htmlmixed';
-  else lang = language;
-
-  window['editor' + language] = CodeMirror(el,{
+$('.panel').each(function(i, el){
+  var lang = $(this).data('lang');
+  editor[lang] = CodeMirror(el,{
     mode: lang,
     lineNumbers: true,
     lineWrapping: true,
     pollInterval: 1500,
-    theme: 'monokai'
+    theme: monokai
   });
 
-  window['editor' + language].setSize(null, '100%');
-  emmetCodeMirror(window['editor' + language]);
-  window['editor' + language].on('change', function(ed){
-    panels[language].target.html(window['editor' + language].getValue());
+  editor[lang].setSize(null, '100%');
+  emmetCodeMirror(editor[lang]);
+  editor.html.on('change', function(editor){
+    $('#canvas').find('#' + lang).html(editor.getValue());
   });
-}
+});
 
 /*==================================================
 ** Document ready initializations
