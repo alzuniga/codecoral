@@ -179,7 +179,7 @@ section.main{
   width: 100%;
 }
 
-.canvas-panel{
+.main .canvas-panel{
   background-color: #ECF0F1;
   display: inline-block;
   height: 100%;
@@ -190,7 +190,7 @@ section.main{
   right: 0;
   bottom: 0;
 }
-.canvas{
+.main .canvas{
   border: none;
   position: absolute;
   top: 0;
@@ -201,18 +201,25 @@ section.main{
   width: 100%;
 }
 
-.code-panel{
+/*.code-panel{*/
+.main [class^="code-panel-"]{
   background-color: #272822;
   height: 100%;
   max-width: 70%;
   min-width: 30%;
-  padding: 2.625rem 0;
+  padding: 1.625rem 0 0.5em;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
 }
-.close-code-panel a{
+.main [class^="code-panel-"]:not(.active) {
+  display: none;
+}
+.main [class$="active"] {
+  display: block;
+}
+.main [class^="code-panel-"] .close-code-panel a{
   background-color: #E74C3C;
   /*border-radius: 50%;*/
   color: #ECF0F1;
@@ -227,7 +234,7 @@ section.main{
   width: 26px;
   z-index: 99;
 }
-.code{
+.main .code{
   margin: 0 0.5rem;
   min-height: 100%;
   overflow-y: scroll;
