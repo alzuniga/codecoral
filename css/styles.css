@@ -189,6 +189,7 @@ section.main{
   top: 0;
   right: 0;
   bottom: 0;
+  width: 50%;
 }
 .main .canvas{
   border: none;
@@ -201,25 +202,37 @@ section.main{
   width: 100%;
 }
 
-/*.code-panel{*/
-.main [class^="code-panel-"]{
+.main .panel-wrap{
   background-color: #272822;
-  height: 100%;
-  max-width: 70%;
-  min-width: 30%;
-  padding: 1.625rem 0 0.5em;
+  display: inline-block;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
+  height: 100%;
+  max-width: 70%;
+  min-width: 30%;
 }
-.main [class^="code-panel-"]:not(.active) {
+
+/*.code-panel{*/
+.main .panel{
+  background-color: #313131;
+  color: #ECF0F1;
+  display: block;
+  height: 33%;
+  width: 100%;
+}
+.main .panel .panel-title{
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+}
+/*.main .panel:not(.active) {
   display: none;
 }
 .main [class$="active"] {
   display: block;
-}
-.main [class^="code-panel-"] .close-code-panel a{
+}*/
+.main .panel .close-code-panel a{
   background-color: #E74C3C;
   /*border-radius: 50%;*/
   color: #ECF0F1;

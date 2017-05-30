@@ -1,61 +1,49 @@
 /*==================================================
 ** HTML/CSS/JS editors and canvas
 **================================================*/
-
 var editor = {};
-$('#output').find('head').append('<style></style>\n<script></script>');
-var iframeTarget = {
-  html: $('#output').find('body'),
-  css: $('#output').find('style'),
-  javascript: $('#output').find('script')
-};
+
 $('.panel').each(function(i, el){
   var lang = $(this).data('lang');
   editor[lang] = CodeMirror(el,{
-    mode: lang,
+    mode: (lang === 'html')? 'htmlmixed': lang,
     lineNumbers: true,
     lineWrapping: true,
     pollInterval: 1500,
-    theme: monokai
+    theme: 'monokai'
   });
 
-  editor[lang].setSize(null, '100%');
+  editor[lang].setSize('100%', '86%');
   emmetCodeMirror(editor[lang]);
-  editor.html.on('change', function(editor){
-    $('#canvas').find('#' + lang).html(editor.getValue());
-  });
+});
+editor.html.on('change', function(editor){
+  $('#canvas').contents().find('#html').html(editor.getValue());
+});
+editor.css.on('change', function(editor){
+  $('#canvas').contents().find('#css').html(editor.getValue());
+});
+editor.javascript.on('change', function(editor){
+  console.log(editor.getValue());
+  // $('#canvas').contents().find('#javascript').html(editor.getValue());
+  $('#canvas').contents().find('#html').append('<h2>Javascript panel currently disabled while in development</h2>');
+  $('div[data-lang="javascript"] .CodeMirror div textarea').attr('disabled');
 });
 
 /*==================================================
 ** Document ready initializations
 **================================================*/
 $().ready(function(){
-  // intialize editors
-  initEditor('html');
-  initEditor('css');
-  initEditor('js');
   // set code panels and canvas panel widths
-  $('.main [class^="code-panel-"]').width(Math.floor($('.main').width() * 0.3));
+  $('.main .panel-wrap').width(Math.floor($('.main').width() * 0.3));
   $('.canvas-panel').width(Math.floor($('.main').width() * 0.7));
   // make panels resizable
-  $('.main [class^="code-panel-"]').resizable({
+  $('.main .panel-wrap').resizable({
     alsoResizeReverse: '.canvas-panel',
     containment: 'section.main',
     handles: 'e'
   });
   // table panel functionality
-  $('ul li[class^="code-panel-"]').click(function() {
-    var selectedPanel = $(this).attr('class').split(' ')[0];
-    $('[class^="code-panel-"]').not('.' + selectedPanel).removeClass('active');
-    $('.' + selectedPanel).addClass('active');
-    // set code panels and canvas panel widths
-    $('.main [class^="code-panel-"]').width(Math.floor($('.main').width() * 0.3));
-    $('.canvas-panel').width(Math.floor($('.main').width() * 0.7));
-    // $('ul li[class^="code-panel-"]').not(selectedPanel).hasClass('active').toggleClass('active');
-    // var currPanel = $(this).attr('class').split(' ')[0];
-    // $('[class^="code-panel-"]').not(currPanel).removeClass('active');
-    // $('[class="' + currPanel + '"]').addClass('active');
-  });
+
 });
 
 // function getNewWidthPercentage(wrapperWidth, elementWidth){
