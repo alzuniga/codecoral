@@ -100,7 +100,6 @@ sub {
 *************************************************/
 header{
   background-color: #2C3E50;
-  /*height: 78px;*/
   padding: 0.8125rem 1rem;
 }
 header::after{
@@ -124,7 +123,6 @@ header a .brand-logo{
   color: #ECF0F1;
   font-size: 1rem;
   height: 42px;
-  /*line-height: 3.25rem;*/
   line-height: 2.5rem;
   text-align: center;
   width: 42px;
@@ -140,7 +138,6 @@ header a .brand .h3 {
 }
 header .pure-menu-list{
   float: right;
-  /*margin: 0.325rem 0;*/
 }
 header .pure-menu-list .pure-menu-item{
   margin-left: 0.5rem;
@@ -153,7 +150,6 @@ header .pure-menu-list .pure-menu-item .pure-menu-link{
   color: #ECF0F1;
   font-size: 1.618rem;
   height: 42px;
-  /*line-height: 1.618rem;*/
   text-transform: uppercase;
   text-align: center;
   width: 42px;
@@ -173,7 +169,6 @@ header .pure-menu-list .pure-menu-item:nth-child(3) .pure-menu-link span.icon-ja
 ** 4. Content
 *************************************************/
 section.main{
-  /*background-color: #272822;*/
   height: calc(100vh - 68px);
   position: relative;
   width: 100%;
@@ -219,22 +214,23 @@ section.main{
   background-color: #313131;
   color: #ECF0F1;
   display: block;
-  height: 33%;
   width: 100%;
 }
+.main .panel.active{
+  display: block;
+}
+
+.main .panel.inactive{
+  display: none;
+}
+
 .main .panel .panel-title{
   display: inline-block;
   padding: 0.25rem 0.5rem;
 }
-/*.main .panel:not(.active) {
-  display: none;
-}
-.main [class$="active"] {
-  display: block;
-}*/
+
 .main .panel .close-code-panel a{
   background-color: #E74C3C;
-  /*border-radius: 50%;*/
   color: #ECF0F1;
   display: block;
   height: 26px;

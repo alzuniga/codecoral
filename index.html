@@ -47,13 +47,13 @@
     </a>
     <a href="#" class="pure-menu-heading pure-menu-link">
       <div class="brand brand-name">
-        <h1 class="h3">Code Coral</h1>
+        <h1 class="h3">Code Corral</h1>
       </div>
     </a>
     <ul class="pure-menu-list">
-      <li class="code-panel-html pure-menu-item active"><a href="#" class="pure-menu-link" title="HTML"><span class="fa fa-html5"></span></a></li>
-      <li class="code-panel-css pure-menu-item"><a href="#" class="pure-menu-link" title="CSS"><span class="fa fa-css3"></span></a></li>
-      <li class="code-panel-js pure-menu-item"><a href="#" class="pure-menu-link" title="JavaScript"><span class="icon-javascript"></span></a></li>
+      <li class="toggleButton pure-menu-item active" data-lang="html"><a href="#" class="pure-menu-link" title="HTML"><span class="fa fa-html5"></span></a></li>
+      <li class="toggleButton pure-menu-item active" data-lang="css"><a href="#" class="pure-menu-link" title="CSS"><span class="fa fa-css3"></span></a></li>
+      <li class="toggleButton pure-menu-item active" data-lang="javascript"><a href="#" class="pure-menu-link" title="JavaScript"><span class="icon-javascript"></span></a></li>
     </ul>
   </header>
 
@@ -62,8 +62,8 @@
   <section class="main">
     <div class="panel-wrap">
       <div class="panel active" data-lang="html"><span class="panel-title">HTML</span></div>
-      <div class="panel" data-lang="css"><span class="panel-title">CSS</span></div>
-      <div class="panel" data-lang="javascript"><span class="panel-title">Javascript</span></div>
+      <div class="panel active" data-lang="css"><span class="panel-title">CSS</span></div>
+      <div class="panel active" data-lang="javascript"><span class="panel-title">Javascript</span></div>
     </div>
     <div class="canvas-panel">
       <iframe id="canvas" class="canvas" src="frame.html" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
@@ -80,6 +80,8 @@
   <!-- jQuery-UI 1.12.1 minified -->
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" charset="utf-8"></script>
   <script src="js/jquery-ui-alsoResizeReverse-plugin.js" charset="utf-8"></script>
+  <!-- Devtools Dectect -->
+  <script src="js/devtools-detect.js" charset="utf-8"></script>
   <!-- Code Coral main -->
   <script src="js/main.js" charset="utf-8"></script>
 </body>
