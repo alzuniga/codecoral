@@ -22,9 +22,29 @@ editor.html.on('change', function(editor){
 editor.css.on('change', function(editor){
   $('#canvas').contents().find('#css').html(editor.getValue());
 });
-editor.javascript.on('change', function(editor, change){
+// editor.javascript.on('change', function(editor, change){
+//   document.getElementById('canvas').contentWindow.eval(editor.getValue());
+//   console.log('FROM: ' + change.from + '\nTO:' + change.to + '\nTEXT: ' + change.text + '\nORIGIN: ' + change.origin);
+// });
+editor.javascript.on('keyup', debounce(function(editor, change){
   document.getElementById('canvas').contentWindow.eval(editor.getValue());
-});
+  $(editor.javascript).blur();
+}, 1000));
+
+function debounce(func, wait, immediate) {
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+}
 
 
 
