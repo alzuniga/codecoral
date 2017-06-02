@@ -7,10 +7,10 @@ $('.panel').each(function(i, el){
   var lang = $(this).data('lang');
   editor[lang] = CodeMirror(el,{
     mode: (lang === 'html')? 'htmlmixed': lang,
-    lineNumbers: true,
+    theme: 'monokai',
+    tabSize: 2,
     lineWrapping: true,
-    pollInterval: 1500,
-    theme: 'monokai'
+    lineNumbers: true
   });
 
   // editor[lang].setSize('100%', '86%');
@@ -22,12 +22,11 @@ editor.html.on('change', function(editor){
 editor.css.on('change', function(editor){
   $('#canvas').contents().find('#css').html(editor.getValue());
 });
-editor.javascript.on('change', function(editor){
-  console.log(editor.getValue());
-  // $('#canvas').contents().find('#javascript').html(editor.getValue());
-  $('#canvas').contents().find('#html').append('<h2>Javascript panel currently disabled while in development</h2>');
-  $('div[data-lang="javascript"] .CodeMirror div textarea').attr('disabled');
+editor.javascript.on('change', function(editor, change){
+  document.getElementById('canvas').contentWindow.eval(editor.getValue());
 });
+
+
 
 /*==================================================
 ** Document ready initializations
@@ -41,7 +40,7 @@ $().ready(function(){
 
   // set code panels heights
   var panelHeights = Math.floor((wrapperHeight / 3) - 34);
-  
+
   $('.main .panel .CodeMirror').css({
     'height': panelHeights + 'px'
   }); // $('.main .panel .CodeMirror').css();
