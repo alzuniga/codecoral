@@ -3,6 +3,7 @@
 **================================================*/
 var editor = {};
 
+// loop to set-up each editor
 $('.panel').each(function(i, el){
   var lang = $(this).data('lang');
   editor[lang] = CodeMirror(el,{
@@ -13,39 +14,29 @@ $('.panel').each(function(i, el){
     lineNumbers: true
   });
 
-  // editor[lang].setSize('100%', '86%');
+  // add Emmet functionality to editors
   emmetCodeMirror(editor[lang]);
+
 });
+
+// Update canvas on html editor change
 editor.html.on('change', function(editor){
   $('#canvas').contents().find('#html').html(editor.getValue());
 });
+
+// Update canvas on css editor change
 editor.css.on('change', function(editor){
   $('#canvas').contents().find('#css').html(editor.getValue());
 });
-// editor.javascript.on('change', function(editor, change){
-//   document.getElementById('canvas').contentWindow.eval(editor.getValue());
-//   console.log('FROM: ' + change.from + '\nTO:' + change.to + '\nTEXT: ' + change.text + '\nORIGIN: ' + change.origin);
-// });
+
+// Update canvas on javascript editor change
+// Using debounce to throttle how often updates take place
 editor.javascript.on('keyup', debounce(function(editor, change){
-  document.getElementById('canvas').contentWindow.eval(editor.getValue());
+  // document.getElementById('canvas').contentWindow.eval(editor.getValue());
+  $('#canvas').contents().find('#javascript').html(editor.getValue());
+  document.getElementById('canvas').contentWindow.postMessage(editor.getValue(), '*');
   $(editor.javascript).blur();
 }, 1000));
-
-function debounce(func, wait, immediate) {
-	var timeout;
-	return function() {
-		var context = this, args = arguments;
-		var later = function() {
-			timeout = null;
-			if (!immediate) func.apply(context, args);
-		};
-		var callNow = immediate && !timeout;
-		clearTimeout(timeout);
-		timeout = setTimeout(later, wait);
-		if (callNow) func.apply(context, args);
-	};
-}
-
 
 
 /*==================================================
@@ -95,3 +86,29 @@ $().ready(function(){
 // 	var elWidth = ((elementWidth - 52) / wrapperWidth) * 100;
 // 	return elWidth.toFixed(2);
 // }
+
+/*==================================================
+** Utility functions
+**================================================*/
+
+// debounce - used to throttle how a function executes
+function debounce(func, wait, immediate) {
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+}
+
+window.addEventListener('message',function (e) {
+  var frame = document.getElementById('canvas');
+  if (e.origin === "null" && e.source === frame.contentWindow)
+    alert('Result: ' + e.data);
+});

@@ -243,12 +243,6 @@ section.main{
   width: 26px;
   z-index: 99;
 }
-.main .code{
-  margin: 0 0.5rem;
-  min-height: 100%;
-  overflow-y: scroll;
-  resize: none;
-}
 
 .CodeMirror-wrap{
   padding-right: 8px;
