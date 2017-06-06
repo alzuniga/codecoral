@@ -1,3 +1,8 @@
+/*
+ * TODO: Fix focus/blur issue;
+ *       Fix document.write issue
+ */
+
 /*==================================================
 ** HTML/CSS/JS editors and canvas
 **================================================*/
@@ -46,8 +51,8 @@ $().ready(function(){
   var wrapperHeight = $('.main').height();
 
   // set code panels and canvas panel widths
-  $('.main .panel-wrap').width(Math.floor($('.main').width() * 0.3));
-  $('.canvas-panel').width(Math.floor($('.main').width() * 0.7));
+  $('.main .panel-wrap').width(Math.floor($('.main').width() * 0.38));
+  $('.canvas-panel').width(Math.floor($('.main').width() * 0.62));
 
   // set code panels heights
   var panelHeights = Math.floor((wrapperHeight / 3) - 34);

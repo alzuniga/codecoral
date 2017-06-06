@@ -175,11 +175,10 @@ section.main{
 }
 
 .main .canvas-panel{
-  background-color: #ECF0F1;
   display: inline-block;
   height: 100%;
-  max-width: 70%;
-  min-width: 30%;
+  max-width: 62%;
+  min-width: 38%;
   position: absolute;
   top: 0;
   right: 0;
@@ -205,8 +204,8 @@ section.main{
   bottom: 0;
   left: 0;
   height: 100%;
-  max-width: 70%;
-  min-width: 30%;
+  max-width: 62%;
+  min-width: 38%;
 }
 
 /*.code-panel{*/
