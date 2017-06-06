@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Code Coral</title>
   <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
-  <!-- Pure CSS minified -->
-  <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <!-- Google fonts - Montserrat, Roboto -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
   <!-- Code Coral styles -->
@@ -19,13 +19,6 @@
   <!-- Code Mirror -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/theme/monokai.min.css" integrity="sha256-L0pJRnSmrQFY0qbGtEdIfJwxE79VZefpW+02lGW8gag=" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css" integrity="sha256-GGAcbnLrt4/AHq5cP2+2UWetYcNsQNjNMqSRStBoPLQ=" crossorigin="anonymous" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.js" integrity="sha256-WD+JTNs8bEZIytzOjSY6TaEHzg50PiN62QZ9YEWFpFE=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/mode/htmlmixed/htmlmixed.min.js" integrity="sha256-fYwhT0v38tXMnxU+JibUW1drchatADDwdPWvOuxI/yg=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/mode/xml/xml.min.js" integrity="sha256-ERFGS58tayDq5kkyNwd/89iZZ+HglMH7eYXxG1hxTvA=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/mode/css/css.min.js" integrity="sha256-FM1AMdIH6Zrnz+JGuB5uTB6jxAJ8/XvGvq4HJM0YtDQ=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/mode/javascript/javascript.min.js" integrity="sha256-Zci/fLjT1ALmFze3qSOXnHkYOOpyj5WUHM/Ioy+Bpyo=" crossorigin="anonymous"></script>
-  <!-- Emmet -->
-  <script src="https://unpkg.com/emmet-codemirror@1.2.5/dist/emmet.js"></script>
   <!-- Font Awesome 4.7.0 -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <!-- Font Mfizz -->
@@ -37,38 +30,20 @@
 <body>
   <!-- header
   =============================================-->
-  <header class="pure-menu pure-menu-horizontal">
-    <a href="#" class="pure-menu-heading pure-menu-link">
-      <div class="brand">
-        <div class="brand-logo">
-          &lt;&nbsp;/&gt;
-        </div>
-      </div>
-    </a>
-    <a href="#" class="pure-menu-heading pure-menu-link">
-      <div class="brand brand-name">
-        <h1 class="h3">Code Corral</h1>
-      </div>
-    </a>
-    <ul class="pure-menu-list">
-      <li class="toggleButton pure-menu-item active" data-lang="html"><a href="#" class="pure-menu-link" title="HTML"><span class="fa fa-html5"></span></a></li>
-      <li class="toggleButton pure-menu-item active" data-lang="css"><a href="#" class="pure-menu-link" title="CSS"><span class="fa fa-css3"></span></a></li>
-      <li class="toggleButton pure-menu-item active" data-lang="javascript"><a href="#" class="pure-menu-link" title="JavaScript"><span class="icon-javascript"></span></a></li>
-    </ul>
-  </header>
 
   <!-- section - main
   =============================================-->
-  <section class="main">
-    <div class="panel-wrap">
-      <div class="panel active" data-lang="html"><span class="panel-title">HTML</span></div>
-      <div class="panel active" data-lang="css"><span class="panel-title">CSS</span></div>
-      <div class="panel active" data-lang="javascript"><span class="panel-title">Javascript</span></div>
+  <div class="container-fluid">
+    <div id="code">
+      <div class="panel active" data-lang="html"></div>
+      <div class="panel active" data-lang="css"></div>
+      <div class="panel active" data-lang="javascript"></div>
     </div>
-    <div class="canvas-panel">
-      <iframe id="canvas" class="canvas" src="frame.html" sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"></iframe>
+    <div id="slider"></div>
+    <div id="canvas">
+      <iframe src="frame.html" frameborder="0" id="sandbox" sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"></iframe>
     </div>
-  </section>
+  </div>
 
   <!--
 ##################################################
@@ -80,6 +55,16 @@
   <!-- jQuery-UI 1.12.1 minified -->
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" charset="utf-8"></script>
   <script src="js/jquery-ui-alsoResizeReverse-plugin.js" charset="utf-8"></script>
+  <!-- Bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- CodeMirror -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.js" integrity="sha256-WD+JTNs8bEZIytzOjSY6TaEHzg50PiN62QZ9YEWFpFE=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/mode/htmlmixed/htmlmixed.min.js" integrity="sha256-fYwhT0v38tXMnxU+JibUW1drchatADDwdPWvOuxI/yg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/mode/xml/xml.min.js" integrity="sha256-ERFGS58tayDq5kkyNwd/89iZZ+HglMH7eYXxG1hxTvA=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/mode/css/css.min.js" integrity="sha256-FM1AMdIH6Zrnz+JGuB5uTB6jxAJ8/XvGvq4HJM0YtDQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/mode/javascript/javascript.min.js" integrity="sha256-Zci/fLjT1ALmFze3qSOXnHkYOOpyj5WUHM/Ioy+Bpyo=" crossorigin="anonymous"></script>
+  <!-- Emmet -->
+  <script src="https://unpkg.com/emmet-codemirror@1.2.5/dist/emmet.js"></script>
   <!-- Devtools Dectect -->
   <script src="js/devtools-detect.js" charset="utf-8"></script>
   <!-- Code Coral main -->

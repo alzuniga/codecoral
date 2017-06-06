@@ -24,22 +24,22 @@ $('.panel').each(function(i, el){
 
 });
 
-// Update canvas on html editor change
+// Update sandbox on html editor change
 editor.html.on('change', function(editor){
-  $('#canvas').contents().find('#html').html(editor.getValue());
+  $('#sandbox').contents().find('#html').html(editor.getValue());
 });
 
-// Update canvas on css editor change
+// Update sandbox on css editor change
 editor.css.on('change', function(editor){
-  $('#canvas').contents().find('#css').html(editor.getValue());
+  $('#sandbox').contents().find('#css').html(editor.getValue());
 });
 
-// Update canvas on javascript editor change
+// Update sandbox on javascript editor change
 // Using debounce to throttle how often updates take place
 editor.javascript.on('keyup', debounce(function(editor, change){
-  // document.getElementById('canvas').contentWindow.eval(editor.getValue());
-  $('#canvas').contents().find('#javascript').html(editor.getValue());
-  document.getElementById('canvas').contentWindow.postMessage(editor.getValue(), '*');
+  // document.getElementById('sandbox').contentWindow.eval(editor.getValue());
+  $('#sandbox').contents().find('#javascript').html(editor.getValue());
+  document.getElementById('sandbox').contentWindow.postMessage(editor.getValue(), '*');
   $(editor.javascript).blur();
 }, 1000));
 
@@ -48,38 +48,34 @@ editor.javascript.on('keyup', debounce(function(editor, change){
 ** Document ready initializations
 **================================================*/
 $().ready(function(){
-  var wrapperHeight = $('.main').height();
+  // Get and set panel widths
+  var code = parseInt($('#code').width(), 10);
+  var slider = parseInt($('#slider').width(), 10);
+  var canvas = parseInt($('#canvas').width(), 10);
+  var minWidth = parseInt((code + slider + canvas) * 10 / 100, 10);
+  var offset = $('.container-fluid').offset();
+  var containerHeight = $('.container-fluid').height();
+  var editorsHeights = Math.floor((containerHeight / 3) /*- 34*/);
 
-  // set code panels and canvas panel widths
-  $('.main .panel-wrap').width(Math.floor($('.main').width() * 0.38));
-  $('.canvas-panel').width(Math.floor($('.main').width() * 0.62));
+  $('#code .panel .CodeMirror').css('height', editorsHeights + 'px');
 
-  // set code panels heights
-  var panelHeights = Math.floor((wrapperHeight / 3) - 34);
-
-  $('.main .panel .CodeMirror').css({
-    'height': panelHeights + 'px'
-  }); // $('.main .panel .CodeMirror').css();
-
-  // make panels resizable
-  $('.main .panel-wrap').resizable({
-    alsoResizeReverse: '.canvas-panel',
-    containment: 'section.main',
-    handles: 'e'
-  }); // $('.main .panel-wrap').resizable();
-
-  // table panel functionality
-  $('.toggleButton').click(function(){
-    var lang = $(this).data('lang');
-    $('[data-lang="' + lang + '"]').toggleClass('active').toggleClass('inactive');
-
-    var activePanels = 3 - $('.panel.inactive').length;
-    var newPanelHeight = Math.floor((wrapperHeight / activePanels) - 34);
-
-    $('.main .active .CodeMirror').css({
-      'height': newPanelHeight + 'px'
-    }); // $('.main .active .CodeMirror').css();
-  }); // $('.toggleButton').click();
+  var splitter = function(e, ui){
+    var codeWidth = parseInt(ui.position.left);
+    var canvasWidth = code + canvas - codeWidth;
+    $('#code').css({width : codeWidth});
+    $('#canvas').css({width : canvasWidth});
+  };
+  // Make slider draggable - jQuery-UI
+  $('#slider').draggable({
+    axis : 'x',
+    containment : [
+        offset.left + minWidth,
+        offset.top,
+        offset.left + code + canvas - minWidth,
+        offset.top + $('.container-fluid').height()
+        ],
+    drag : splitter
+  });
 
   window.addEventListener('devtoolschange', function (e) {
 		console.log('is DevTools open?', e.detail.open);
