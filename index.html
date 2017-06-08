@@ -30,14 +30,63 @@
 <body>
   <!-- header
   =============================================-->
-
+  <div class="nav navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#" class="navbar-brand">
+          <span class="brand-logo">&lt;&nbsp;/&gt;</span>
+        </a>
+        <a href="#" class="navbar-brand">
+          <h1 class="h3">Code Corral</h1>
+        </a>
+      </div>
+      <div id="primary-navigation" class="collapse navbar-collapse navbar-right">
+        <button class="togglebutton btn btn-default navbar-btn">
+          <span class="fa fa-html5"></span>
+        </button>
+        <button class="togglebutton btn btn-default navbar-btn">
+          <span class="fa fa-css3"></span>
+        </button>
+        <button class="togglebutton btn btn-default navbar-btn">
+          <span class="icon-javascript"></span>
+        </button>
+      </div>
+    </div>
+  </div>
   <!-- section - main
   =============================================-->
-  <div class="container-fluid">
+  <div class="container-fluid container-fluid-main">
     <div id="code">
-      <div class="panel active" data-lang="html"></div>
-      <div class="panel active" data-lang="css"></div>
-      <div class="panel active" data-lang="javascript"></div>
+      <div class="panel-title">
+        HTML
+        <span class="minimize-panel">
+          <a class="active" data-lang="html" href="#">
+            <span class="fa fa-window-minimize"></span>
+        </a>
+        </span>
+      </div>
+      <div class="panel active" data-lang="html">
+      </div>
+      <div class="panel-title">
+        CSS
+        <span class="minimize-panel">
+          <a class="active" data-lang="css" href="#">
+            <span class="fa fa-window-minimize"></span>
+        </a>
+        </span>
+      </div>
+      <div class="panel active" data-lang="css">
+      </div>
+      <div class="panel-title">
+        JavaScript
+        <span class="minimize-panel">
+          <a class="active" data-lang="javascript" href="#">
+            <span class="fa fa-window-minimize"></span>
+        </a>
+        </span>
+      </div>
+      <div class="panel active" data-lang="javascript">
+      </div>
     </div>
     <div id="slider"></div>
     <div id="canvas">

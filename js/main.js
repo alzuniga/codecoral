@@ -53,9 +53,9 @@ $().ready(function(){
   var slider = parseInt($('#slider').width(), 10);
   var canvas = parseInt($('#canvas').width(), 10);
   var minWidth = parseInt((code + slider + canvas) * 10 / 100, 10);
-  var offset = $('.container-fluid').offset();
-  var containerHeight = $('.container-fluid').height();
-  var editorsHeights = Math.floor((containerHeight / 3) /*- 34*/);
+  var offset = $('.container-fluid-main').offset();
+  var containerHeight = $('.container-fluid-main').height();
+  var editorsHeights = Math.floor((containerHeight / 3) - 34); // subtract from division to adjust heights
 
   $('#code .panel .CodeMirror').css('height', editorsHeights + 'px');
 
@@ -72,21 +72,39 @@ $().ready(function(){
         offset.left + minWidth,
         offset.top,
         offset.left + code + canvas - minWidth,
-        offset.top + $('.container-fluid').height()
+        offset.top + $('.container-fluid-main').height()
         ],
     drag : splitter
   });
+  // table panel functionality
+  $('.minimize-panel a').click(function(){
+    var lang = $(this).data('lang');
+    $('[data-lang="' + lang + '"]').toggleClass('active').toggleClass('inactive');
 
-  window.addEventListener('devtoolschange', function (e) {
-		console.log('is DevTools open?', e.detail.open);
-		console.log('and DevTools orientation?', e.detail.orientation);
-	});
+    var activePanels = 3 - $('.panel.inactive').length;
+    var newPanelHeight = Math.floor((containerHeight / activePanels) - 34);
+
+    $('#code .panel .CodeMirror').css('height', newPanelHeight + 'px');
+    $('#code .panel.inactive .CodeMirror').css('height', '0');
+  }); // $('.toggleButton').click();
 });
 
-// function getNewWidthPercentage(wrapperWidth, elementWidth){
-// 	var elWidth = ((elementWidth - 52) / wrapperWidth) * 100;
-// 	return elWidth.toFixed(2);
-// }
+/*==================================================
+** Resizing functions
+**================================================*/
+$(window).resize(function(){
+  $('#sandbox').css({
+    'height': '100%',
+    'width': '100%'
+  });
+});
+
+
+// DevTools Event Listener - Listens for when DevTools opens.
+window.addEventListener('devtoolschange', function (e) {
+  console.log('is DevTools open?', e.detail.open);
+  console.log('and DevTools orientation?', e.detail.orientation);
+});
 
 /*==================================================
 ** Utility functions
@@ -109,7 +127,7 @@ function debounce(func, wait, immediate) {
 }
 
 window.addEventListener('message',function (e) {
-  var frame = document.getElementById('canvas');
+  var frame = document.getElementById('sandbox');
   if (e.origin === "null" && e.source === frame.contentWindow)
     alert('Result: ' + e.data);
 });
