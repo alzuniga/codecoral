@@ -54,8 +54,8 @@ $().ready(function(){
   var canvas = parseInt($('#canvas').width(), 10);
   var minWidth = parseInt((code + slider + canvas) * 10 / 100, 10);
   var offset = $('.container-fluid-main').offset();
-  var containerHeight = $('.container-fluid-main').height();
-  var editorsHeights = Math.floor((containerHeight / 3) - 34); // subtract from division to adjust heights
+  var containerHeight = $('.container-fluid-main').height() - (34 * 3);
+  var editorsHeights = Math.floor((containerHeight / 3)); // subtract from division to adjust heights
 
   $('#code .panel .CodeMirror').css('height', editorsHeights + 'px');
 
@@ -76,16 +76,39 @@ $().ready(function(){
         ],
     drag : splitter
   });
+
   // table panel functionality
   $('.minimize-panel a').click(function(){
     var lang = $(this).data('lang');
     $('[data-lang="' + lang + '"]').toggleClass('active').toggleClass('inactive');
+    $('[data-lang="' + lang + '"] span').toggleClass('fa-compress').toggleClass('fa-expand');
 
-    var activePanels = 3 - $('.panel.inactive').length;
-    var newPanelHeight = Math.floor((containerHeight / activePanels) - 34);
+    var inactivePanels = $('.panel.inactive').length;
+    var activePanels = 3 - inactivePanels;
+    var newPanelHeight = Math.floor((containerHeight / activePanels));
 
-    $('#code .panel .CodeMirror').css('height', newPanelHeight + 'px');
-    $('#code .panel.inactive .CodeMirror').css('height', '0');
+    $('#code .panel .CodeMirror').animate({
+      'height': newPanelHeight + 'px',
+      'visibility': 'visible'
+    },
+    500,
+    'linear',
+    function(){
+      for(var language in editor){
+        editor[language].refresh();
+      }
+    });
+    $('#code .panel.inactive .CodeMirror').animate({
+      'height':'0',
+      'visibility': 'hidden'
+    },
+    500,
+    'linear',
+    function(){
+      for(var language in editor){
+        editor[language].refresh();
+      }
+    });
   }); // $('.toggleButton').click();
 });
 

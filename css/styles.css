@@ -247,17 +247,25 @@ html, body {height: 100%;}
 .minimize-panel a{
   background-color: #E7C83C;
   border-radius: 50%;
-  color: #ECF0F1;
+  color: #313131;
   display: inline-block;
-  height: 26px;
-  line-height: 26px;
+  font-size: 0.618rem;
+  font-weight: bold;
+  height: 1.125rem;
+  line-height: 1.125rem;
   position: absolute;
+  transition: all 1s;
   text-align: center;
   text-decoration: none;
-  top: 0.25em;
-  right: 0.5em;
-  width: 26px;
+  top: 0.9em;
+  right: 0.9em;
+  width: 1.125rem;
   z-index: 99;
+}
+
+.minimize-panel a.inactive{
+  background-color: #35db34;
+  transition: all 1s;
 }
 
 /*=== Slider ===*/
@@ -265,14 +273,14 @@ html, body {height: 100%;}
   background-color: #535353;
   cursor: col-resize;
   left: 38%;
-  width: 1%;
+  width: 0.5%;
 }
 
 /*=== Canvas ===*/
 #canvas{
   background-color: #fff;
   right: 0;
-  width: 61%;
+  width: 61.5%;
 }
 
 /*=== Sandbox ===*/
