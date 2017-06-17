@@ -161,7 +161,7 @@ html, body {height: 100%;}
 .navbar-brand .h3{
   color: #ECF0F1;
   display: inline-block;
-  margin-top: 5px;
+  margin-top: 8px;
   text-transform: uppercase;
 }
 .brand-logo{
@@ -170,10 +170,11 @@ html, body {height: 100%;}
   color: #ECF0F1;
   display: block;
   font-size: 16px;
-  height: 36px;
+  height: 2.625rem;
   line-height: 2.2em;
+  padding: 0.225rem 0.375rem;
   text-align: center;
-  width: 36px;
+  width: 2.625rem;
 }
 
 #primary-navigation .btn:hover,
@@ -201,6 +202,13 @@ html, body {height: 100%;}
   font-size: 1.618rem;
   line-height: 2rem;
 }
+
+.btn.active.focus, .btn.active:focus,
+.btn.focus, .btn:active.focus,
+.btn:active:focus, .btn:focus {
+  outline: 0;
+  outline-offset: 0;
+}
 /*************************************************
 ** 5. Content
 *************************************************/
@@ -226,7 +234,9 @@ html, body {height: 100%;}
 
 /*=== Code ===*/
 #code{
-  background-color: #272822;
+  /*background-color: #272822;*/
+  /*background-color: #7c7d77;*/
+  background-color: #646464;
   left: 0;
   width: 38%;
 }
@@ -285,7 +295,7 @@ html, body {height: 100%;}
 
 /*=== Sandbox ===*/
 #sandbox{
-  background-color: #ccccff;
+  /*background-color: #ccccff;*/
   width: 100%;
   height: 100%;
 }
